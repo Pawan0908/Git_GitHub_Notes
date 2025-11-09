@@ -1,0 +1,340 @@
+Git: Version control system is a tools that helps to track changes in code.
+
+git is a version control system. 
+Used to:	1. Track the history
+		2. Collaboration with team
+
+
+
+GitHub: It is a website that allows developers to store and manage their code using Git.
+
+Create a New repository: Name_of_repository
+Commit: Save final changes
+
+Configuring Git
+
+1. git config --global user.name  "GitHub User Name"
+2. git config --global user.email "GitHub mail id"
+3. git config --list (use for to check what we have config till running this command)
+
+cd			: change directory 
+cd (folder name)	: change directory to given folder name
+cd ..			: Go to the parent folder
+cd - 			: Go to the previous folder
+cd / 			: Go to the root directory
+cd ~ 			: Go to your home directory
+cd ../../ 		: Go up multiple folders (Moves up two levels)
+ls 			: show all the folder 
+ls -a 			: show all hidden folder
+mkdir <repo name>	: Create new directory(create new folder in repo on local)
+
+Clone & Status
+1. Clone - cloning a repository on our local machine
+	git clone <-repository link ->
+
+2. Status: command displays the state of your working directory and staging area, showing you which files have changed and are ready to be committed.
+	git status
+
+Steps of Status in Git:
+
+Modify/New -> add -> commit
+
+On branch [branch-name] 	: The name of the branch you are currently on.
+Untracked files			: Files that are created new and not yet managed by Git.
+Modified			: Files that are changed
+Changes to be committed		: Files that you have added to the staging area with git add, which are ready for a commit.
+Changes not staged for commit	: Files that have been modified but are not yet added to the staging area.
+
+Add & Commit
+1. Add: Adds new or changed files in your working directory to the Git staging area.
+	git add <-file name-> 	for single file 
+	git add .    		for all files which is modify.
+
+2. Commit: it is the record of change
+	git commit -m "Some message"
+
+Push Command
+1. Push: upload local repo content to remote repo
+	git push origin main
+
+Init Command
+1. Init: used to create new local repo to git repo
+	git init
+
+2. git remote add origin: It is used to establish a connection between an existing local Git repository and a remote repository. This is typically used when you have a local project and want to link it to a newly created or existing remote repository.
+
+	git remote add origin <repo link>
+
+
+
+Git Branches
+
+1.	git branch		(to check out the branch name)
+
+2.	git branch -M main	(to rename the branch name)
+
+3.	git checkout <branch name)	(to change branch from current to new)
+
+4. 	git checkout -b <new branch name>	(to create new branch)
+
+5. 	git branch -d <branch name>		(to delete branch)
+
+
+
+Merging Code
+
+1. git diff <branch name>		(to compare commits, branches, files & more between present branch and <branch name>)
+
+2. git merge <branch name>		(to merge 2 branches between present branch and <branch name>)
+
+
+Create PR (Pull Request): It lets you tell others about changes you've pushed to a branch in a repository on GitHub.
+
+
+Pull Command: Used to fetch and download content from a remote repo and immediately update the local repo to match that content
+
+	git pull origin main
+
+
+Merge Conflicts: An event that takes place when Git is unable to Automatically resolve differences in code between two commits.
+
+	git merge <branch-name>
+
+
+Undoing Changes: 
+
+Case 1: staged Changes
+	git reset <file name>
+	git reset		(all files)
+
+Case 2: committed Changes (for one commit)
+	git reset HEAD~1
+
+Case 3: committed changes (for many commits)
+	git reset <commit has>
+	git reset --hard <commit hash>
+	git log 		(to check history of commits)
+
+
+Fork: Forks are commonly used in open-source development. If you want to propose changes to a project you don't own, you fork it, make your modifications in your fork, and then submit a "pull request" to the original repository's maintainers.
+
+
+========================================================================================================================================================================================================================================================================================================================================================================================
+
+
+Git flow if local machine project want to push over GitHub (local repo to remote repo)
+
+flow from a local Git repo on your machine → to a remote repo on GitHub.
+
+1. git init
+
+2. git remote add origin <URL>
+
+3. git remote -v	(to verity remote repo)
+
+4. git branch		(to check branch of repo)
+
+5. git branch -M main	(to rename the branch)
+
+6. git add .		(optional step if any new changes makes)
+
+7. git commit -m "message"
+
+8. git push -u origin main	(-u used for to use same branch for future)
+
+9. Then: git pull → git add → git commit → git push
+
+
+Create Project Folder in vs code using mkdir command i.e. local machine -> Initialize in vs code(go to folder using cd folder name) -> If starting a new project (git init) -> If any changes happen in files (git add filename or git add .) -> Save changes with a message (git commit -m "message") -> Send commits to GitHub/GitLab/Bitbucket (git push origin <branch-name>) -> Get latest changes from remote before working again (git pull origin <branch-name>) -> Create a new branch for a feature (git checkout -b feature-branch) -> Switch back to main branch (git checkout main) -> Merge branch when done (git merge feature-branch)
+
+Flow to 
+
+clone → branch → edit → add → commit → push → pull/merge
+
+
+========================================================================================================================================================================================================================================================================================================================================================================================
+
+Got it 👍 Let me give you a **basic Git workflow (flow)** that most developers follow. Think of it like the everyday cycle when working with code:
+
+
+## 🔄 Basic Git Flow
+
+1. **Initialize / Clone a Repo**
+
+   * If starting a new project:
+
+     ```bash
+     git init
+     ```
+   * If joining an existing project:
+
+     ```bash
+     git clone <repo-url>
+     ```
+
+2. **Check Status**
+
+   * See which files are changed or untracked:
+
+     ```bash
+     git status
+     ```
+
+3. **Make Changes**
+
+   * Edit, add, or delete files in your project.
+
+4. **Stage Changes**
+
+   * Add specific files:
+
+     ```bash
+     git add filename
+     ```
+   * Or add all changes:
+
+     ```bash
+     git add .
+     ```
+
+5. **Commit Changes**
+
+   * Save changes with a message:
+
+     ```bash
+     git commit -m "Meaningful message about what you did"
+     ```
+
+6. **Push to Remote**
+
+   * Send commits to GitHub/GitLab/Bitbucket:
+
+     ```bash
+     git push origin branch-name
+     ```
+
+7. **Pull Updates**
+
+   * Get latest changes from remote before working again:
+
+     ```bash
+     git pull origin branch-name
+     ```
+
+8. **Branching (Optional but Common)**
+
+   * Create a new branch for a feature:
+
+     ```bash
+     git checkout -b feature-branch
+     ```
+   * Switch back to main branch:
+
+     ```bash
+     git checkout main
+     ```
+   * Merge branch when done:
+
+     ```bash
+     git merge feature-branch
+     ```
+
+---
+
+### ⚡ Quick Summary Flow:
+
+`clone → branch → edit → add → commit → push → pull/merge`
+
+
+========================================================================================================================================================================================================================================================================================================================================================================================
+
+
+
+Perfect 👌 Let’s break down the **flow from a local Git repo on your machine → to a remote repo on GitHub**.
+
+---
+
+## 🔄 Flow: Local → Remote (GitHub)
+
+### 1. **Initialize a Local Repo**
+
+```bash
+git init
+```
+
+Creates a new Git repository in your project folder.
+
+---
+
+### 2. **Connect Local to Remote (GitHub)**
+
+* Create a new repo on GitHub (without README if you already have local files).
+* Link local repo to GitHub remote:
+
+```bash
+git remote add origin https://github.com/username/repo.git
+```
+
+Check remote:
+
+```bash
+git remote -v
+```
+
+---
+
+### 3. **Stage Changes**
+
+```bash
+git add .
+```
+
+---
+
+### 4. **Commit Changes**
+
+```bash
+git commit -m "First commit"
+```
+
+---
+
+### 5. **Push to Remote (GitHub)**
+
+```bash
+git push -u origin main
+```
+
+👉 `-u` sets `origin main` as the default, so later you can just do:
+
+```bash
+git push
+```
+
+---
+
+### 6. **Future Work Cycle**
+
+* Pull latest changes:
+
+  ```bash
+  git pull origin main
+  ```
+* Make edits → `git add` → `git commit` → `git push`.
+
+---
+
+## ⚡ Quick Flow (Local → GitHub)
+
+1. `git init`
+2. `git remote add origin <URL>`
+3. `git add .`
+4. `git commit -m "message"`
+5. `git push -u origin main`
+6. Then: `git pull` → `git add` → `git commit` → `git push`
+
+
+
+
+Question?
+1. what is difference between git clone and git remote add origin?
